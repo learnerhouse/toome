@@ -65,6 +65,7 @@
 <script type="text/ecmascript-6">
   import backbar from './public/backBar.vue'
   import spinner from './public/spinner.vue'
+  import publicHeader from './public/publicHeader.vue'
   export default{
     data(){
       return{
@@ -73,7 +74,7 @@
     },
     created() {
       //判断网络状态
-      this.$http.get('https://api.leancloud.cn/1.1/classes/explore').then((success) => {
+      this.$http.get('/mongo/get-publisher-data').then((success) => {
         this.tranform = false;
       }, (error) => {
         console.log(error)

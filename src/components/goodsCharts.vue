@@ -73,7 +73,7 @@
       }
       this.$http.get('https://api.leancloud.cn/1.1/classes/goods' ,options).then((success) => {
         this.tranform = false;
-        this.goodsChartsBody = success.body.results;
+        this.goodsChartsBody = success.body.data;
         this.newDate();
       }, (error) => {
         console.log(error)

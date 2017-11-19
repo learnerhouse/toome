@@ -1,6 +1,9 @@
 body{
   margin: 0;
   padding: 0;
+  background-color: #ffffff;
+  /*background-color: #f1f1f1;*/
+  /*background:url(../image/titles_bg2.jpg) repeat top;*/
 }
 .indexMargin {
   margin-bottom: 56px;

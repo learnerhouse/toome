@@ -114,10 +114,11 @@
         }
       },
       created() {
-        this.$http.get('https://api.leancloud.cn/1.1/classes/goods').then((success) => {
+        this.$http.get('mongo/get-goods').then((success) => {
           this.tranform = false;
           this.newDate();
-          this.goodsBody = success.body.results;
+          this.goodsBody = success.body.data;
+
         }, (error) => {
           console.log(error)
         })

@@ -17,6 +17,10 @@
     bottom: 0;
     z-index:1000;
   }
+  .mu-bottom-nav-shift {
+    background-color: rgba(238,76,102,1)!important;
+ //   background:url(../../assets/image/bg.jpg) repeat top left #3d1e0d;
+  }
 </style>
 <script type="text/ecmascript-6">
     export default{

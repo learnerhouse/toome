@@ -23,21 +23,22 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8089,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      // '/api': {
-      //   target: 'https://api.leancloud.cn:443/1.1/',
-      //   // target: 'http://localhost:9090/xinqiji/index.php/Home/index/xinjson',
-      //   changeOrigin: true,
-      //   // 如果不用pathRewrite，目标地址后面不能跟接口名字
-      //   pathRewrite: {
-      //     '^/api': '/'
-      //   }
-      // }
-    },
+      '/api': {
+        target: 'http://api.nashuju.com:8867',
+        changeOrigin: true,
+        secure:false,
+        // 如果不用pathRewrite，目标地址后面不能跟接口名字
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  },
 
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
@@ -45,5 +46,4 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
-  }
 }

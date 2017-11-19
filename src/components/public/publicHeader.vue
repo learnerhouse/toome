@@ -85,10 +85,13 @@
     bottom: 12%;
     color: #dedede;
   }
+  .mu-appbar {
+    background-color: rgba(238,76,102,1);
+    //background:url(../../assets/image/bg.jpg) repeat top left #3d1e0d;
+  }
 </style>
 <script type="text/ecmascript-6">
   import {mapActions} from 'vuex'
-
   export default{
       data () {
         return {
@@ -99,7 +102,7 @@
           //注销dialog开关
           dialog: false,
           //咨询dialog开关
-          phoneDialog: false
+          phoneDialog: false,
         }
       },
       methods: {

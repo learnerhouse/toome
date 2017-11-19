@@ -150,10 +150,12 @@
         }
       },
       created(){
-        this.$http.get('https://api.leancloud.cn/1.1/classes/topic').then((success) => {
+        this.$http.get('/api/topic').then((success) => {
           this.tranform = false;
           this.newDate();
-          this.userDynamicBody = success.body.results;
+          this.userDynamicBody = success.body.data;
+          console.log("https://api.leancloud.cn/1.1/classes/topic:")
+          console.log(JSON.stringify(success.body.results))
         }, (error) => {
           console.log(error)
         })

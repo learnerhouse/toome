@@ -43,6 +43,8 @@
           this.tranform = false;
           this.detailBody = success.body;
           this.newDate();
+          console.log("https://api.leancloud.cn/1.1/classes/explore/：")
+          console.log(JSON.stringify(success.body.results))
         }, (error) => {
           console.log(error)
         })

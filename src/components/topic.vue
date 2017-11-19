@@ -136,10 +136,11 @@
       //   params: { 'cql': "select * , include userId from topic)"}
       // }
       //topic时间内容JSON
-      this.$http.get('https://api.leancloud.cn/1.1/classes/topic').then((success) => {
+      this.$http.get(publicheader.HOST+'api/topic').then((success) => {
         this.tranform = false;
         this.newDate();
-        this.topicContentBody = success.body.results;
+        this.topicContentBody = success.body.data;
+
       }, (error) => {
         console.log(error)
       })
@@ -152,8 +153,8 @@
       // })
 
       //热门话题
-      this.$http.get('https://api.leancloud.cn/1.1/classes/topicMore').then((success) => {
-        this.topicMoreBody = success.body.results;
+      this.$http.get('/mongo/get-topic-more').then((success) => {
+        this.topicMoreBody = success.body.data;
       }, (error) => {
         console.log(error)
       })

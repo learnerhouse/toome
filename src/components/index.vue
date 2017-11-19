@@ -1,5 +1,5 @@
 <template>
-  <div class="index indexMargin backAddFont"  >
+  <div class="index indexMargin backAddFont">
     <spinner v-if='tranform'></spinner>
     <publicheader :menushow="menushow" :headtitle="headtitle" ></publicheader>
     <div v-if='!tranform'>
@@ -34,15 +34,15 @@
       <publictitle :publictitle="publictitle"></publictitle>
 
       <div class="indexContent borderBottom1px" v-for="item in exploreBody">
-        <router-link :to="{ name:'detailPage',params:{ id:item.objectId } }">
+        <router-link :to="{ name:'detailPage',params:{ id:item.id } }">
           <mu-card>
             <mu-card-media>
                 <!--<img  :src="item.CoverMap.url" class="cardImg" />-->
-                  <img class="cardImg" v-lazy="{ src: item.CoverMap.url,
+                  <img class="cardImg" v-lazy="{ src: item.coverMap.url,
                   error:'https://m.simpletour.com/images/defalut-img@588250.png',
                   loading: 'http://cdn.uehtml.com/201402/1392662591495_1140x0.gif'}"/>
             </mu-card-media>
-            <mu-card-title :title="item.title"  :subTitle=" ymd > item.createdAt.substring(0,10) ? item.createdAt.substring(0,10):item.createdAt.substr(11,5)"/>
+            <!--<mu-card-title :title="item.title"  :subTitle=" ymd > item.createdAt.substring(0,10) ? item.createdAt.substring(0,10):item.createdAt.substr(11,5)"/>-->
           </mu-card>
         </router-link>
       </div>
@@ -88,6 +88,7 @@
         headtitle: "发现",
         publictitle: "发现美好",
         ymd: '',
+        id: this.$route.query.id,
       }
     },
     methods:{
@@ -109,13 +110,13 @@
     },
     created() {
       // 在main.js里导入并使用vue-resource之后，就可以通过this.$http来使用vue-resource了，这里我们用到了get方法
-        this.$http.get('https://api.leancloud.cn/1.1/classes/explore').then((success) => {
-        // 请求成功，关闭loading
+        this.$http.get('http://www.giveyouthebest.com:8080/mongo/get-publisher-data').then((success) => {
+          console.log(success.body)
         this.tranform = false;
         // 由于请求成功返回的是Promise对象，我们要从success.body拿到数组
-        this.exploreBody = success.body.results;
+        this.exploreBody = success.body;
+        //console.log(JSON.stringify(success.body.data))
         this.newDate();
-
       }, (error) => {
         console.log(error)
       })

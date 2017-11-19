@@ -9,6 +9,7 @@ export const SESSION_TOKEN = 'SESSION_TOKEN';
 export const IS_FIRST = 'IS_FIRST';
 export const LOG_OUT = 'LOG_OUT';
 
+
 // 对于vuex的用法，其实理解了流程就行
 // vuex -> actions -> 提交（commit）mutations ->state -> view -> dispatch 触发 actions ->...
 // actions 其实是mutations的升级版，它实现了mutations只能同步改变状态不能异步改变

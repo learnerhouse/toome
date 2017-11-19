@@ -39,6 +39,30 @@ Vue.use(Vuex)
       //   }
       // }]
     },
+     {
+       path: "/toome",
+       name: "toome",
+       component: (resolve) => {
+         require(["../components/toome.vue"], resolve);
+       },
+       meta: {
+         navShow: true,
+         cname: '一级页面',
+         keepAlive: true
+       },
+     },
+     {
+       path: "/index1",
+       name: "index1",
+       component: (resolve) => {
+         require(["../components/index1.vue"], resolve);
+       },
+       meta: {
+         navShow: true,
+         cname: '一级页面',
+         keepAlive: true
+       },
+     },
     {
       path: "/search",
       name: "search",

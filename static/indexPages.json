@@ -1,0 +1,22 @@
+
+{
+  "ver": "1.0",
+  "soa": {
+  "req": "12345"
+  },
+  "result":
+    [
+      {
+        "image":"https://images.simpletour.com/simpletour/images/wechat_banner/45354e74a7dfda4177e081fbb188fc11.jpg!wechatQ3640160",
+        "comment":"第一张图片",
+        "userName":"张三"
+      },
+      {
+        "image":"https://images.simpletour.com/simpletour/images/wechat_banner/2a6a4af6412f37f7e0bcf0aebe834b2c.jpg!wechatQ3640160",
+        "comment":"第二张图片",
+        "userName":"李四"
+      }
+    ],
+  "ex": null
+}
+
