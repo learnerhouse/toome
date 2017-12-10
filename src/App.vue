@@ -6,7 +6,7 @@
     </keep-alive>
 
     <router-view v-if="!$route.meta.keepAlive"></router-view>
-    <publicfooter  v-show="$route.meta.navShow"></publicfooter>
+    <!--<publicfooter  v-show="$route.meta.navShow"></publicfooter>-->
 
   </div>
 </template>

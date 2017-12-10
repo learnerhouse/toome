@@ -29,7 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://api.nashuju.com:8867',
+        target: 'http://blog.arthurpapa.cn:8867',
         changeOrigin: true,
         secure:false,
         // 如果不用pathRewrite，目标地址后面不能跟接口名字

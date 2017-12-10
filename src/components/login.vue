@@ -79,7 +79,7 @@
           }
         console.log(options);
           // 在main.js里导入并使用vue-resource之后，就可以通过this.$http来使用vue-resource了，这里我们用到了get方法
-          this.$http.post('http://api.nashuju.com:8867/login', options).then((success) => {
+          this.$http.post('/api/login', options).then((success) => {
              console.log(success.body);
             //分发actions组件中调用
             this.loginUsername(success.body.username);

@@ -1,27 +1,56 @@
 <template>
   <div>
-    <publicheader :menushow="menushow" :headtitle="headtitle" ></publicheader>
-    <mu-card>
-      <mu-card-header :title="indexPages.realName" :subTitle="sex[indexPages.sex]">
-        <mu-avatar :src="indexPages.icon" slot="avatar"/>
-      </mu-card-header>
-      <mu-card-media :title="image" subTitle="Image Sub Title">
-        <img src="../assets/image/blueSky.jpg" />
-      </mu-card-media>
-      <mu-card-title title="Content Title" subTitle="Content Title"/>
-      <mu-card-text>
-        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-      </mu-card-text>
-      <mu-card-actions>
-        <mu-flat-button label="Action 1"/>
-        <mu-flat-button label="Action 2"/>
-      </mu-card-actions>
-    </mu-card>
+    <mu-appbar title="Title">
+      <mu-icon-button icon="menu" slot="left"/>
+      <mu-flat-button label="expand_more" slot="right"/>
+      <mu-icon-button icon="expand_more" slot="right"/>
+    </mu-appbar>
+    <div class="icons">
+      <!--<mu-list-item>-->
+        <!--<mu-avatar slot="left" :src="indexPages.icon"/>-->
+      <!--</mu-list-item>-->
+      <!--<mu-list-item>-->
+        <!--<mu-avatar slot="left" :src="indexPages.icon"/>-->
+      <!--</mu-list-item>-->
+    </div>
+    <mu-tabs :value="activeTab" @change="handleTabChange">
+      <mu-tab value="tab1" title="宠物"/>
+      <mu-tab value="tab2" title="美食"/>
+      <mu-tab value="tab3" @active="handleActive" title="美女"/>
+    </mu-tabs>
+    <div v-if="activeTab === 'tab1'">
+      <div class="avatar">
+        <mu-list-item title="张三" disabled>
+          <mu-avatar slot="left" :src="indexPages.icon"/>
+        </mu-list-item>
+      </div>
+      <div class="image-dec">
+        {{indexPages.email}}
+      </div>
+      <div class="image-context">
+        <mu-card>
+        <mu-card-media >
+          <img :src="images[0].imgs[0].url" />
+        </mu-card-media>
+          <mu-card-media >
+            <img :src="images[0].imgs[0].url" />
+        </mu-card-media>
+        </mu-card>
+      </div>
+    </div>
+    <div v-if="activeTab === 'tab2'">
+      <h2>popular</h2>
+      <p>
+        这是第二个 tab
+      </p>
+    </div>
+    <div v-if="activeTab === 'tab3'">
+      <h2>selected</h2>
+      <p>
+        这是第三个 tab
+      </p>
+    </div>
   </div>
-
 </template>
 
 
@@ -35,6 +64,7 @@
     data() {
       return {
         indexPages: {},
+        images:{},
         tranform: this.$store.state.tranform,
         menushow: true,
         headtitle: "发现",
@@ -42,6 +72,7 @@
         ymd: '',
         id: this.$route.query.id,
         sex:["女","男"],
+        activeTab: 'tab1',
       }
     },
     components: {
@@ -59,7 +90,23 @@
         this.indexPages = success.body.result;
       }, (error) => {
         console.log(error)
+      });
+      this.$http.get('/api/judgement/image').then((success) => {
+        console.log(success.body.result)
+        this.tranform = false;
+        // 由于请求成功返回的是Promise对象，我们要从success.body拿到数组
+        this.images = success.body.result;
+      }, (error) => {
+        console.log(error)
       })
+    },
+    methods: {
+      handleTabChange (val) {
+        this.activeTab = val
+      },
+      handleActive () {
+        window.alert('tab active')
+      }
     },
   }
 </script>
@@ -67,6 +114,44 @@
 <style lang="less" scoped>
   @import './../assets/css/public.css';
   @import "./../assets/css/style.css";
+  .mu-appbar{
+    background-color: mediumslateblue;
+  }
+  .icons{
+    background-color: mediumslateblue;
+    height: 180px;
+  }
+  .avatar{
+    margin-left: 2%;
+    margin-top: 2%;
+  }
+  .image-dec{
+    margin-left: 6%;
+  }
+  .mu-card{
+    box-shadow: none;
+  }
+  .mu-card-media>img{
+    border-radius: 30px;
+  }
+  .mu-card-media{
+    margin: 30px;
+  }
+  .mu-card-media-title{
+    display: none;
+  }
+  .image-context{
+
+  }
+  .mu-tabs {
+    background-color: #ffffff;
+  }
+  .mu-tab-link{
+    color: mediumslateblue;
+  }
+  .mu-tab-active{
+    color: black;
+  }
   .mu-card-header {
     margin-top: 14%;
     padding: 2%;

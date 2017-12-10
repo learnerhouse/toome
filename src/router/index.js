@@ -13,7 +13,7 @@ Vue.use(Vuex)
       path: "/",
       name: "home",
       component: (resolve) => {
-        require(["../components/index.vue"], resolve);
+        require(["../components/index1.vue"], resolve);
       },
       meta: {
         navShow: true,      // 表示此路由需要显示底部导航栏
